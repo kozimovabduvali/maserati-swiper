@@ -18,11 +18,11 @@
 }
 
 .swiper-next-active-animation {
-  animation: clipPathNext 1.35s ease-in-out;
+  animation: clipPathNext 1.60s ease-in-out;
 }
 
 .swiper-prev-active-animation {
-  animation: clipPathPrev 1.35s ease-in-out;
+  animation: clipPathPrev 1.60s ease-in-out;
   z-index: 10;
 }
 
