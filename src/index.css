@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+.swiper-maserati-slider-prev-button,
+.swiper-maserati-slider-next-button {
+  @apply size-10 shrink-0 rounded-full bg-white flex items-center justify-center absolute top-1/2 -translate-y-1/2 cursor-pointer z-30;
+}
+
+.swiper-maserati-slider-prev-button {
+  @apply left-8;
+}
+
+.swiper-maserati-slider-next-button {
+  @apply right-8;
+}
+
+.swiper-slide.isVisible {
+  opacity: 1 !important;
+}
+
+.swiper-next-active-animation {
+  animation: clipPathNext 1.35s ease-in-out;
+}
+
+.swiper-prev-active-animation {
+  animation: clipPathPrev 1.35s ease-in-out;
+  z-index: 10;
+}
+
+@keyframes clipPathNext {
+  0% {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+  100% {
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+  }
+}
+
+@keyframes clipPathPrev {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.exterior.animate-switch-slider,
+.interior.animate-switch-slider {
+  animation: animate-slider 1.5s ease-in-out;
+  z-index: 20;
+  visibility: visible;
+}
+
+@keyframes animate-slider {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+  }
+
+  99% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    opacity: 0;
+  }
+}
+
+.exterior,
+.interior {
+  @apply invisible opacity-0 will-change-[clip-path] backface-hidden;
+}
+
+.exterior.is-active,
+.interior.is-active {
+  @apply !visible opacity-100 z-10;
+}
